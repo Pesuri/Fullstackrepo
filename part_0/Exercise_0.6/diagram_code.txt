@@ -1,0 +1,9 @@
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server-->browser: {"message":"note created"}
+
+note over browser:
+browser receives a short
+reply. And content is updated
+without needing to load whole
+page again.
+end note
