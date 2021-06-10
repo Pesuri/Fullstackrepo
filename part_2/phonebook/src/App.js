@@ -10,7 +10,8 @@ const App = () => {
   const [ newNumber,  setNewNumber ] = useState('')
   const [ newFilter,  setNewFilter ] = useState('')
   const [ showAll,    setShowAll ] = useState(true)
-  const [errorMessage, setErrorMessage] = useState(null) 
+  const [ notificationMessage, setNotificationMessage] = useState(null) 
+  const [ errorMSG, setErrorMSG] = useState(false) 
   const msgTime = 3000
 
   useEffect(() => {
@@ -20,14 +21,14 @@ const App = () => {
         setPersons(initialPersons)      
     })
   }, [])
-
   const addPerson = (event) => {
     event.preventDefault()
     const nameObject = {
         name: newName,
         number: newNumber,
-        id: persons.length + 1
+        id: findNextId()
     }
+    console.log(findNextId())
     const existingPerson = persons.filter(person => person.name === nameObject.name)
    
     if (existingPerson.length > 0)
@@ -41,16 +42,18 @@ const App = () => {
           setPersons(persons.map(person => person.id !== existingPerson[0].id ? person : returnedPerson))
           setNewName('')
           setNewNumber('')
-          setErrorMessage(`Changed number for ${nameObject.name}`)  
+          setNotificationMessage(`Changed number for ${nameObject.name}`)  
           setTimeout(() => {          
-            setErrorMessage(null)       
+            setNotificationMessage(null)       
           }, msgTime)
         })
         .catch(error => {
-          setErrorMessage(`Information of ${nameObject.name} has already been removed from server`)
+          setNotificationMessage(`Information of ${nameObject.name} has already been removed from server`)
+          setErrorMSG(true)
           setPersons(persons.filter(person => person.id !== existingPerson[0].id) )
           setTimeout(() => {          
-            setErrorMessage(null)       
+            setNotificationMessage(null)       
+            setErrorMSG(false)
           }, msgTime)
         })
       }
@@ -63,21 +66,40 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
-          setErrorMessage(`Added ${nameObject.name}`)  
+          setNotificationMessage(`Added ${nameObject.name}`)  
           setTimeout(() => {          
-            setErrorMessage(null)       
+            setNotificationMessage(null)       
           }, msgTime)
       })
     }
   } 
   
-  const Notification = ({ message }) => {
+  //Finds biggest id number and returns number bigger by one. Othervise removing person before last person of the list might create error when trying to add new person.
+  const findNextId = () =>{
+    const idList = persons.map(person => person.id+1)
+    return Math.max(idList)+1
+  }
+
+  const Notification = ({ message, error }) => {
+    var notificationStyle = {   
+      color: "green",
+    }
+
     if (message === null) {
       return null
     }
-  
+
+    if (errorMSG)
+    {
+      notificationStyle = {   
+        color: 'red'
+      }
+    }
+
+    console.log(errorMSG)
+
     return (
-      <div className="error">
+      <div className='notification' style={notificationStyle}>
         {message}
       </div>
     )
@@ -91,16 +113,18 @@ const App = () => {
         .delet(id)
         .then( response => {
           setPersons(persons.filter(person => person.id !== id) )
-          setErrorMessage(`Information of ${name} was removed from server`)
+          setNotificationMessage(`Information of ${name} was removed from server`)
           setTimeout(() => {          
-            setErrorMessage(null)       
+            setNotificationMessage(null)       
           }, msgTime)
         })
         .catch(error => {
-          setErrorMessage(`Information of ${name} has already been removed from server`)
+          setNotificationMessage(`Information of ${name} has already been removed from server`)
+          setErrorMSG(true)
           setPersons(persons.filter(person => person.id !== id) )
           setTimeout(() => {          
-            setErrorMessage(null)       
+            setNotificationMessage(null)  
+            setErrorMSG(false)
           }, msgTime)
         })
     }
@@ -132,7 +156,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={errorMessage}/>
+      <Notification message={notificationMessage}/>
       <Filter newFilter={newFilter} handleChange={handleChange} />
       <Form handleSubmit={addPerson} newName={newName} newNumber={newNumber} handleChange={handleChange} />
       <Numbers persons={persons} showAll={showAll} newFilter={newFilter} del={del} />
