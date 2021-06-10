@@ -1,0 +1,1 @@
+Completed exercises 1.1 - 1.5 for course_information project.

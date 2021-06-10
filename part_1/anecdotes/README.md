@@ -1,0 +1,1 @@
+Completed exercises 1.12 - 1.14 for anecdotes project.
