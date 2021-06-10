@@ -1,0 +1,1 @@
+Completed exercises 2.12 - 2.14 for data_for_countries project.  
