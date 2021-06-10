@@ -26,19 +26,18 @@ Exercise 0.6 - Completed, pushed to github
   
 Part 1:  
 Exercises 1.1  - 1.5:  
-	course_information 	- Completed, pushed to GitHub  
+--course_information --- Completed, pushed to GitHub  
 Exercises 1.6  - 1.11: 
-	unicafe 		- Completed, pushed to GitHub  
+--unicafe -------------- Completed, pushed to GitHub  
 Exercises 1.12 - 1.14:  
-	anecdotes 	 	- Completed, pushed to GitHub  
-
+--anecdotes ------------ Completed, pushed to GitHub  
 
   
 Part 2:  
 Exercises 2.1  - 2.5:  
-	course_information 	- Completed, pushed to GitHub  
-Exercises 2.6  - 2.11, 2.15 - 2.20: 
-	phonebook 		- Completed, pushed to GitHub  
+--course_information -- Completed, pushed to GitHub  
+Exercises 2.6  - 2.11, 2.15 - 2.20:  
+--phonebook ----------- Completed, pushed to GitHub  
 Exercises 2.12 - 2.14:  
-	data_for_countries 	- Completed, pushed to GitHub  
+--data_for_countries -- Completed, pushed to GitHub  
 
