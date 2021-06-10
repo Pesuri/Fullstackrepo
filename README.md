@@ -10,7 +10,7 @@ part_1
 -course_information  
 -unicafe  
 part_2  
--countries  
+-data_for_countries  
 -course_information  
 -phonebook  
   
@@ -32,4 +32,13 @@ Exercises 1.6  - 1.11:
 Exercises 1.12 - 1.14:  
 	anecdotes 	 	- Completed, pushed to GitHub  
 
+
+  
+Part 2:  
+Exercises 2.1  - 2.5:  
+	course_information 	- Completed, pushed to GitHub  
+Exercises 2.6  - 2.11, 2.15 - 2.20: 
+	phonebook 		- Completed, pushed to GitHub  
+Exercises 2.12 - 2.14:  
+	data_for_countries 	- Completed, pushed to GitHub  
 
