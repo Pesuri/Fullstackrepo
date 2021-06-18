@@ -1,1 +1,1 @@
-Completed exercises 2.6-2.11, 2.15-2.20 for phonebook project.
+Modified version of part_2 phonebook frontend.
