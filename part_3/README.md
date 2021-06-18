@@ -5,4 +5,4 @@ Folders:
 --backend  
 --frontend  
   
-Completed exercises 3.1 - 2.22 for phonebook project. 
+Completed exercises 3.1 - 3.22 for phonebook project. 
